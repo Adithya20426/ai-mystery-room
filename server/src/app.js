@@ -1,0 +1,21 @@
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import rateLimit from 'express-rate-limit';
+import { env } from './config/env.js';
+import { sessionMiddleware } from './middleware/session.js';
+import { errorHandler, notFound } from './middleware/errors.js';
+import investigations from './routes/investigations.js';
+
+const app=express();
+app.disable('x-powered-by');
+app.use(cors({origin:env.clientUrl,credentials:true}));
+app.use(express.json({limit:'32kb'}));
+app.use(cookieParser());
+app.use(sessionMiddleware);
+app.use('/api/',rateLimit({windowMs:60_000,limit:60,standardHeaders:'draft-7',legacyHeaders:false}));
+app.get('/api/v1/health',(req,res)=>res.json({success:true,data:{status:'ok'}}));
+app.use('/api/v1/investigations',investigations);
+app.use(notFound);
+app.use(errorHandler);
+export default app;
