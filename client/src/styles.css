@@ -34,7 +34,26 @@
 /* Make the full case resolution comfortable to read. */
 .result-lead{font-size:15px}
 .solution-card h2{font-size:28px}
-.solution-card>p{font-size:14px;line-height:1.8}
+.solution-details>p{font-size:14px;line-height:1.8}
 .solution-facts small,.decisive-evidence>b{font-size:12px}
 .solution-facts p{font-size:14px;line-height:1.75}
 .decisive-evidence span{font-size:13px;line-height:1.7}
+
+.key-clues{margin-top:26px;padding:18px;background:#1d2926;border:1px solid #386056}
+.key-clues>b{font:10px var(--mono);letter-spacing:.1em;color:var(--teal);text-transform:uppercase}
+.key-clues>p{margin:7px 0 14px;color:#b5c6c0;font-size:12px;line-height:1.6}
+.key-clues>div{display:grid;gap:10px}
+.key-clues article{display:grid;grid-template-columns:31px 1fr;gap:10px;padding:12px;background:#17211f;border-left:2px solid var(--teal)}
+.key-clues article>span{color:var(--teal);padding-top:3px}
+.key-clues small{font:9px var(--mono);letter-spacing:.08em;color:#8ab9ad}
+.key-clues h3{margin:5px 0;font:500 16px var(--serif);color:var(--paper)}
+.key-clues article p{margin:0;color:#b8c6c2;font-size:12px;line-height:1.65}
+
+/* Pair the clues players saw during the investigation with the final explanation. */
+.result-page{max-width:1500px;width:100%;padding-left:4vw;padding-right:4vw}
+.solution-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.solution-details .solution-facts{grid-template-columns:1fr;gap:12px;margin:18px 0}
+.solution-details .solution-facts>div{display:block}
+.solution-clue-column{display:grid;gap:18px}
+.solution-clue-column .key-clues{margin-top:0}
+@media(max-width:900px){.result-page{padding-left:22px;padding-right:22px}.solution-card{display:flex;flex-direction:column}.solution-details,.solution-clue-column{width:100%}.solution-clue-column{gap:18px}}
